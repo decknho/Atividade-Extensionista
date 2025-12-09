@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Educação Financeira Sustentável{% endblock %}</title>
+</head>
+<body>
+    <h1>Software de Educação Financeira Sustentável</h1>
+    <nav>
+        <a href="{% url 'dashboard' %}">Dashboard</a> |
+        <a href="{% url 'nova_transacao' %}">Nova transação</a>
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>
