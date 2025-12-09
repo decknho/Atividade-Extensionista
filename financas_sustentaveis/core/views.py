@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.utils import timezone
 from .models import Transacao
 from django import forms
+from decimal import Decimal
 
 class TransacaoForm(forms.ModelForm):
     class Meta:
@@ -17,7 +18,7 @@ def dashboard(request):
     saldo = total_receitas - total_despesas
 
     # Exemplo: reserva = 20% do saldo positivo
-    reserva_sugerida = saldo * 0.2 if saldo > 0 else 0
+    reserva_sugerida = saldo / 5 if saldo > 0 else Decimal('0')
 
     context = {
         'transacoes': transacoes,
