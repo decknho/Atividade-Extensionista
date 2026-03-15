@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Financeiro</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <h2 class="logo">Finance</h2>
+
+        <nav>
+            <a href="#">Dashboard</a>
+            <a href="#">Controle</a>
+            <a href="#">Simulador</a>
+            <a href="#">Educação</a>
+        </nav>
+
+    </aside>
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <header class="header">
+            <h1>Controle Financeiro</h1>
+        </header>
+
+        <!-- CARDS -->
+
+        <section class="cards">
+
+            <div class="card">
+                <h3>Renda</h3>
+                <p id="print_renda">R$ 0</p>
+            </div>
+
+            <div class="card">
+                <h3>Gastos</h3>
+                <p id="print_gastos">R$ 0</p>
+            </div>
+
+            <div class="card">
+                <h3>Saldo</h3>
+                <p id="print_saldo">R$ 0</p>
+            </div>
+
+            <div class="card destaque">
+                <h3>Investimento sugerido</h3>
+                <p id="print_investimento">R$ 0</p>
+            </div>
+
+        </section>
+
+        <!-- FORMULÁRIO -->
+
+        <section class="form-section">
+
+            <h2>Inserir dados</h2>
+
+            <div class="form">
+
+                <label>Renda mensal</label>
+                <input id="renda" type="number" placeholder="Digite sua renda">
+
+                <label>Gastos mensais</label>
+                <input id="gastos" type="number" placeholder="Digite seus gastos">
+
+                <div class="buttons">
+
+                    <button type="button" class="btn salvar" onclick="salvar()">Salvar</button>
+                    <button type="button" class="btn carregar">Carregar</button>
+                    <button type="button" class="btn exportar">Exportar</button>
+
+                </div>
+
+                
+
+            </div>
+
+        </section>
+        
+
+        <!-- ÁREA DE GRÁFICOS -->
+
+        <section class="charts">
+
+            <div class="chart-box">
+                <h3>Distribuição de gastos</h3>
+                <div class="chart-placeholder">
+                    <canvas id="graficoGastos"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-box">
+                <h3>Simulação de investimento</h3>
+                <div class="chart-placeholder">
+                    <canvas id="graficoInvestimento"></canvas>
+                </div>
+                <input id="anos" type="number" placeholder="Digite o número de anos">
+                <button type="button" onclick="investimentoSelic()">Calcular</button>
+                <p id="resultado"></p>
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
