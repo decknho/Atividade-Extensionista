@@ -1,32 +1,35 @@
 saldoInicial = 0;
 
 function salvar(renda, gastos) {
-    console.log("SALVAR FOI CHAMADO")
+    
     renda = document.getElementById("renda").value;
     gastos = document.getElementById("gastos").value;
     document.getElementById("print_renda").innerHTML = "R$ " + renda;
     document.getElementById("print_gastos").innerHTML = "R$ " + gastos;
     document.getElementById("print_saldo").innerHTML = "R$ " + (parseFloat(renda) - parseFloat(gastos)).toFixed(2);
-    saldoInicial = (parseFloat(renda) * 0.2).toFixed(2);
+    saldoInicial = ((parseFloat(renda) - parseFloat(gastos)) / 2).toFixed(2);
     document.getElementById("print_investimento").innerHTML = "R$ " + saldoInicial;
 }
 
 
 async function investimentoSelic() {
-    console.log("INVESTIMENTO FOI CHAMADO")
-    const response = await fetch("https://api.bcb.gov.br/dados/serie/bcdata.sgs.4189/dados?formato=json");
+
+    console.log("Investir FOI CHAMADO")
+
+    const response = await fetch("https://api.bcb.gov.br/dados/serie/bcdata.sgs.4189/dados/ultimos/1?formato=json");
     const selic = await response.json();
 
-    const ssaldoInicial = document.getElementById("print_investimento").value;
-    const ssaldoMensal = document.getElementById("print_investimento").value;
-    const aanos = document.getElementById("anos").value;
+    let renda = document.getElementById("renda").value;
+    let gastos = document.getElementById("gastos").value;
 
-    const saldoInicial = parseFloat(ssaldoInicial);
-    const saldoMensal = parseFloat(ssaldoMensal);
-    const anos = parseInt(aanos);
+    let sugestao = ((parseFloat(renda) - parseFloat(gastos)) / 2).toFixed(2);
+    sugestao = parseFloat(sugestao);
+
+    const saldoMensal = sugestao;
+    const anos = parseInt(document.getElementById("anos").value);
 
     if (
-        isNaN(saldoInicial) || saldoInicial < 0 ||
+        isNaN(sugestao) || sugestao < 0 ||
         isNaN(saldoMensal) || saldoMensal < 0 ||
         isNaN(anos) || anos <= 0
     ) {
@@ -36,14 +39,14 @@ async function investimentoSelic() {
 
     }
 
-    let saldo = saldoInicial;
-    let meses = anos * 12;
+    let saldo = sugestao;
+    const meses = anos * 12;
 
-    const porcentagemSelicMes = parseFloat(selic[selic.length - 1].valor) / 12;
+    const porcentagemSelicMes = parseFloat(selic[0].valor) / 12;
 
     let historico = [];
 
-    historico.push(saldoInicial);
+    historico.push(saldo);
 
     for (let i = 0; i < meses; i++) {
 
@@ -89,17 +92,30 @@ function criarGrafico(labels, dados) {
 
     },
 
-    options: {
-
-      responsive: true,
-
+    options: { responsive: true,
       plugins: {
         legend: {
           display: true
         }
+      },
+      scales: {
+
+        y: {
+
+          ticks: {
+
+            callback: function(value) {
+              return "R$ " + value.toLocaleString("pt-BR");
+            }
+
+          }
+
+        }
+
       }
 
     }
+    
 
   });
 
