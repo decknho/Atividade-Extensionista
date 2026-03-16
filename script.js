@@ -28,14 +28,24 @@ async function investimentoSelic() {
     const saldoMensal = sugestao;
     const anos = parseInt(document.getElementById("anos").value);
 
+    const ERRO = {
+      CAMPOS_INVALIDOS: "Preencha os campos de renda e gastos corretamente!",
+      SUGESTAO_NEGATIVA: "A sugestão de investimento deve ser um valor positivo!",
+      ANOS_INVALIDOS: "Coloque os anos de investimento pretendido corretamente!"
+    };
+
     if (isNaN(sugestao)) {
-        document.getElementById("resultado").innerText = "Preencha os campos de renda e gastos corretamente!";
+        mostrarErro(ERROS.CAMPOS_INVALIDOS);
         return;
-    } else if (sugestao <= 0) {
-        document.getElementById("resultado").innerText = "A sugestão de investimento deve ser um valor positivo! Sugiro que você revise seus gastos para aumentar sua capacidade de investimento.";
+    }
+
+    if (sugestao <= 0) {
+        mostrarErro(ERROS.SUGESTAO_NEGATIVA );
         return;
-    } else if (isNaN(anos) || anos <= 0) {
-        document.getElementById("resultado").innerText = "Coloque os anos de investimento prentendido corretamente!";
+    }
+
+    if (isNaN(anos) || anos <= 0) {
+        mostrarErro(ERROS.ANOS_INVALIDOS);
         return;
     }
 
@@ -124,7 +134,7 @@ function criarGrafico(labels, dados) {
 function mostrarErro(msg) {
     const resultado = document.getElementById("resultado");
 
-    resultado.textContent = msg;
+    resultado.innerText = msg;
 
     setTimeout(() => {
         resultado.textContent = "";
