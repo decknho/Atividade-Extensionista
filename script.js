@@ -35,17 +35,17 @@ async function investimentoSelic() {
     };
 
     if (isNaN(sugestao)) {
-        mostrarErro(ERROS.CAMPOS_INVALIDOS);
+        mostrarErro(ERRO.CAMPOS_INVALIDOS);
         return;
     }
 
     if (sugestao <= 0) {
-        mostrarErro(ERROS.SUGESTAO_NEGATIVA );
+        mostrarErro(ERRO.SUGESTAO_NEGATIVA );
         return;
     }
 
     if (isNaN(anos) || anos <= 0) {
-        mostrarErro(ERROS.ANOS_INVALIDOS);
+        mostrarErro(ERRO.ANOS_INVALIDOS);
         return;
     }
 
