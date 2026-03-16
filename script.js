@@ -30,7 +30,7 @@ async function investimentoSelic() {
 
     const ERRO = {
       CAMPOS_INVALIDOS: "Preencha os campos de renda e gastos corretamente!",
-      SUGESTAO_NEGATIVA: "A sugestão de investimento deve ser um valor positivo!",
+      SUGESTAO_NEGATIVA: "A sugestão de investimento deve ser um valor positivo! Sugiro revisar seus gastos para aumentar o valor disponível para investimento.",
       ANOS_INVALIDOS: "Coloque os anos de investimento pretendido corretamente!"
     };
 
