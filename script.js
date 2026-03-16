@@ -138,5 +138,5 @@ function mostrarErro(msg) {
 
     setTimeout(() => {
         resultado.textContent = "";
-    }, 5000); // desaparece em 5 segundos
+    }, 10000); // desaparece em 10 segundos
 }
