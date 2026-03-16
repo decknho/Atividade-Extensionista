@@ -120,3 +120,13 @@ function criarGrafico(labels, dados) {
   });
 
 }
+
+function mostrarErro(msg) {
+    const resultado = document.getElementById("resultado");
+
+    resultado.textContent = msg;
+
+    setTimeout(() => {
+        resultado.textContent = "";
+    }, 3000); // desaparece em 3 segundos
+}
