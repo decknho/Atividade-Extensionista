@@ -102,11 +102,16 @@
 
             <div class="chart-box">
                 <h3>Simulação de investimento</h3>
-                <div class="chart-placeholder">
+
+                <div class="chart-placeholder investimento">
                     <canvas id="graficoInvestimento"></canvas>
                 </div>
-                <input id="anos" type="number" placeholder="Digite o número de anos">
-                <button type="button" onclick="investimentoSelic()">Calcular</button>
+                <br>
+                <div class="texto_centralizado">
+                    <input id="anos" type="number" class="scanner" placeholder="Digite o número de anos">
+                    <button type="button" class="btn calcular" onclick="investimentoSelic()">Calcular</button>
+                </div>
+                
                 <p id="resultado"></p>
             </div>
 

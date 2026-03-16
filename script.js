@@ -28,15 +28,15 @@ async function investimentoSelic() {
     const saldoMensal = sugestao;
     const anos = parseInt(document.getElementById("anos").value);
 
-    if (
-        isNaN(sugestao) || sugestao < 0 ||
-        isNaN(saldoMensal) || saldoMensal < 0 ||
-        isNaN(anos) || anos <= 0
-    ) {
-
-        document.getElementById("resultado").innerText = "Preencha todos os campos corretamente!";
+    if (isNaN(sugestao)) {
+        document.getElementById("resultado").innerText = "Preencha os campos de renda e gastos corretamente!";
         return;
-
+    } else if (sugestao <= 0) {
+        document.getElementById("resultado").innerText = "A sugestão de investimento deve ser um valor positivo! Sugiro que você revise seus gastos para aumentar sua capacidade de investimento.";
+        return;
+    } else if (isNaN(anos) || anos <= 0) {
+        document.getElementById("resultado").innerText = "Coloque os anos de investimento prentendido corretamente!";
+        return;
     }
 
     let saldo = sugestao;
