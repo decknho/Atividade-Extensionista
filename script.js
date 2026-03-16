@@ -134,9 +134,9 @@ function criarGrafico(labels, dados) {
 function mostrarErro(msg) {
     const resultado = document.getElementById("resultado");
 
-    resultado.innerText = msg;
+    resultado.innerHTML = "<br>" + msg;
 
     setTimeout(() => {
         resultado.textContent = "";
-    }, 3000); // desaparece em 3 segundos
+    }, 5000); // desaparece em 5 segundos
 }
